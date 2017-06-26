@@ -108,6 +108,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		891E5D891F014D2100BBD9CD /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				89B21ABE1EFFE30A008E75F9 /* Assets.xcassets */,
+				89B21AC31EFFE30A008E75F9 /* Info.plist */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		891E5D8A1F014D3C00BBD9CD /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				89B21ABB1EFFE30A008E75F9 /* Main.storyboard */,
+				89B21AC01EFFE30A008E75F9 /* LaunchScreen.storyboard */,
+			);
+			name = StoryBoard;
+			sourceTree = "<group>";
+		};
 		89B21AAB1EFFE30A008E75F9 = {
 			isa = PBXGroup;
 			children = (
@@ -133,13 +151,11 @@
 		89B21AB61EFFE30A008E75F9 /* Pickture */ = {
 			isa = PBXGroup;
 			children = (
-				89B21AF11EFFE8EA008E75F9 /* ViewControllers */,
-				89B21AE51EFFE433008E75F9 /* Util */,
 				89B21AB71EFFE30A008E75F9 /* AppDelegate.swift */,
-				89B21ABB1EFFE30A008E75F9 /* Main.storyboard */,
-				89B21ABE1EFFE30A008E75F9 /* Assets.xcassets */,
-				89B21AC01EFFE30A008E75F9 /* LaunchScreen.storyboard */,
-				89B21AC31EFFE30A008E75F9 /* Info.plist */,
+				89B21AE51EFFE433008E75F9 /* Util */,
+				89B21AF11EFFE8EA008E75F9 /* ViewControllers */,
+				891E5D8A1F014D3C00BBD9CD /* StoryBoard */,
+				891E5D891F014D2100BBD9CD /* Resource */,
 			);
 			path = Pickture;
 			sourceTree = "<group>";
