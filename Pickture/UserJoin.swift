@@ -27,17 +27,17 @@ class UserJoin : UIViewController, NetworkCallback {
         checkGirl.setToggleImages(trueImgName: "joinbutton_public", falseImgName: "joinbutton_photographer")
     }
     
+    // id 중복 체크
     @IBAction func btnChkID(_ sender: Any) {
-        /*
-         중복 체크해서 
-         중복되는거 없으면
-         chkID = 1 로 수정해주기
-         */
+        let _id = gsno(txtID.text)
+        
+        let model = RegisterModel(self)
+        model.chkID(id: _id)
     }
     
+    
     @IBAction func btnCancle(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Login")
-        present(vc!, animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     
@@ -52,18 +52,6 @@ class UserJoin : UIViewController, NetworkCallback {
         
         let model = RegisterModel(self)
         model.registerUser(id: _id, password: _password)
-        
-        /*
-        if let svc = storyboard?.instantiateViewController(withIdentifier: "UserJoin_2") as? UserJoin_2 {
-            svc.username = _username
-            svc.password = _password
-            present(svc, animated: true, completion: nil)
-        }
-            
-        else{
-            simpleAlert(title: "동의 미설정", msg: "약관을 모두 체크해주세요 !")
-        }
-         */
     }
     
     

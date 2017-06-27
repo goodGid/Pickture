@@ -25,16 +25,7 @@ class PhoGrapJoin_2: UIViewController,UIPickerViewDelegate,UIPickerViewDataSourc
     var id : String?
     var password : String?
     
-    
-    
-    
-    override func simpleAlert(title: String, msg: String) {
-        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "확인", style: .default)
-        alert.addAction(okAction)
-        present(alert, animated: true)
-    }
-    
+
     
     @IBAction func btnDone(_ sender: Any) {
         let _id = gsno(id)
@@ -43,7 +34,6 @@ class PhoGrapJoin_2: UIViewController,UIPickerViewDelegate,UIPickerViewDataSourc
         let model = RegisterModel(self)
         model.registerUser(id: _id, password: _password)
         
-        
         let vc = storyboard?.instantiateViewController(withIdentifier: "Login")
         present(vc!, animated: true)
         
@@ -51,8 +41,7 @@ class PhoGrapJoin_2: UIViewController,UIPickerViewDelegate,UIPickerViewDataSourc
     }
     
     @IBAction func btnCancle(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Login")
-        present(vc!, animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     func networkResult(resultData: Any, code: String){

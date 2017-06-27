@@ -19,15 +19,16 @@ class Login: UIViewController {
         inputPW.setBottomBorder()
     }
     @IBAction func regUser(_ sender: Any) {
-        if let svc = storyboard?.instantiateViewController(withIdentifier: "UserJoin_1") as? UserJoin_1 {
+        if let svc = storyboard?.instantiateViewController(withIdentifier: "UserJoin") as? UserJoin {
             present(svc, animated: true, completion: nil)
         }
     }
     
  
     @IBAction func regPhotographer(_ sender: Any) {
-        
-        
+        if let svc = storyboard?.instantiateViewController(withIdentifier: "PhoGrapJoin_1") as? PhoGrapJoin_1 {
+            present(svc, animated: true, completion: nil)
+        }
     }
     
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserJoin : UIViewController {
+class PhoGrapJoin_1 : UIViewController {
     
     @IBOutlet weak var checkBoy: CheckBox!
     @IBOutlet weak var checkGirl: CheckBox!
@@ -47,8 +47,8 @@ class UserJoin : UIViewController {
         let _password = gsno(txtPW.text)
         
         
-         if let svc = storyboard?.instantiateViewController(withIdentifier: "UserJoin_2") as? UserJoin_2 {
-         svc.username = _username
+         if let svc = storyboard?.instantiateViewController(withIdentifier: "PhoGrapJoin_2") as? PhoGrapJoin_2 {
+         svc.id = _id
          svc.password = _password
          present(svc, animated: true, completion: nil)
          }
