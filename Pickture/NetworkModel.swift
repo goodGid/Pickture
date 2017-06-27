@@ -15,9 +15,8 @@ class NetworkModel {
         self.view = vc
     }
     
-    //     let baseURL = "http://52.79.177.153:3000"
-    
-    let baseURL = "http://13.124.42.165:3000"
+//    let baseURL = "http://13.124.42.165:3000"
+    let baseURL = "http://52.78.25.56:3000"
     
     //옵셔널 String을 해제하는데 값이 nil이면 ""을 반환
     func gsno(_ data: String?) -> String {

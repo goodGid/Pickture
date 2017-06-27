@@ -1,5 +1,5 @@
 //
-//  BoardModel.swift
+//  UserModel.swift
 //  Pickture
 //
 //  Created by Kiyong Shin on 25/06/2017.

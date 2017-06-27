@@ -17,9 +17,19 @@ class Login: UIViewController {
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
         inputID.setBottomBorder()
         inputPW.setBottomBorder()
-        
-        print("test")
     }
+    @IBAction func regUser(_ sender: Any) {
+        if let svc = storyboard?.instantiateViewController(withIdentifier: "UserJoin_1") as? UserJoin_1 {
+            present(svc, animated: true, completion: nil)
+        }
+    }
+    
+ 
+    @IBAction func regPhotographer(_ sender: Any) {
+        
+        
+    }
+    
 }
 
 
