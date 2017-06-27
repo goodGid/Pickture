@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CdK-vF-eVC">
-                                <rect key="frame" x="93" y="419" width="188" height="44"/>
+                                <rect key="frame" x="93" y="437" width="188" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="BQf-ug-pte"/>
                                     <constraint firstAttribute="width" constant="188" id="Zrr-XT-w91"/>
@@ -31,7 +31,7 @@
                                 <state key="normal" image="loginbutton"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02o-AS-xsB">
-                                <rect key="frame" x="93" y="474" width="189" height="33"/>
+                                <rect key="frame" x="93" y="492" width="189" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="189" id="G6F-Wa-UHu"/>
                                     <constraint firstAttribute="height" constant="32.5" id="tBM-NX-OKD"/>
@@ -39,45 +39,45 @@
                                 <state key="normal" image="facebook_loginbutton"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwc-I9-7ad">
-                                <rect key="frame" x="92" y="548" width="91" height="31"/>
+                                <rect key="frame" x="92" y="566" width="91" height="31"/>
                                 <state key="normal" image="joinbutton_public"/>
                                 <connections>
                                     <action selector="regUser:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KLZ-NN-ECH"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_yellow" translatesAutoresizingMaskIntoConstraints="NO" id="LZ6-w1-crf">
-                                <rect key="frame" x="67" y="147" width="242" height="64"/>
+                                <rect key="frame" x="67" y="171" width="242" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="AUZ-Wp-msa"/>
                                     <constraint firstAttribute="width" constant="242" id="oLg-e8-Bcc"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XnW-cV-jHi">
-                                <rect key="frame" x="67" y="274" width="21" height="26"/>
+                                <rect key="frame" x="67" y="298" width="21" height="26"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PW" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOR-Of-GUz">
-                                <rect key="frame" x="67" y="336" width="34" height="26"/>
+                                <rect key="frame" x="67" y="360" width="34" height="26"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UhH-pR-YoV">
-                                <rect key="frame" x="112" y="342" width="205" height="17"/>
+                                <rect key="frame" x="112" y="360" width="205" height="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kC9-sE-Tsz">
-                                <rect key="frame" x="112" y="277" width="205" height="17"/>
+                                <rect key="frame" x="112" y="295" width="205" height="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HbP-M8-7jD">
-                                <rect key="frame" x="191" y="548" width="91" height="31"/>
+                                <rect key="frame" x="191" y="566" width="91" height="31"/>
                                 <state key="normal" image="joinbutton_photographer"/>
                                 <connections>
                                     <action selector="regPhotographer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2eX-Qi-IIy"/>
@@ -96,8 +96,8 @@
                             <constraint firstItem="ZOR-Of-GUz" firstAttribute="top" secondItem="XnW-cV-jHi" secondAttribute="bottom" constant="36" id="Gqg-0K-zhT"/>
                             <constraint firstItem="Iwc-I9-7ad" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="92" id="IVu-3G-WEJ"/>
                             <constraint firstItem="02o-AS-xsB" firstAttribute="leading" secondItem="CdK-vF-eVC" secondAttribute="leading" id="QCa-26-49u"/>
-                            <constraint firstItem="LZ6-w1-crf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="127" id="eGo-qN-6uq"/>
-                            <constraint firstItem="kC9-sE-Tsz" firstAttribute="top" secondItem="LZ6-w1-crf" secondAttribute="bottom" constant="66" id="f6d-hF-Im3"/>
+                            <constraint firstItem="LZ6-w1-crf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="151" id="eGo-qN-6uq"/>
+                            <constraint firstItem="kC9-sE-Tsz" firstAttribute="top" secondItem="LZ6-w1-crf" secondAttribute="bottom" constant="60" id="f6d-hF-Im3"/>
                             <constraint firstItem="UhH-pR-YoV" firstAttribute="leading" secondItem="kC9-sE-Tsz" secondAttribute="leading" id="f86-MM-st9"/>
                             <constraint firstItem="UhH-pR-YoV" firstAttribute="trailing" secondItem="kC9-sE-Tsz" secondAttribute="trailing" id="hFB-4D-U6R"/>
                             <constraint firstItem="XnW-cV-jHi" firstAttribute="top" secondItem="LZ6-w1-crf" secondAttribute="bottom" constant="63" id="lll-RP-dEF"/>
@@ -117,12 +117,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="122.78860569715144"/>
+            <point key="canvasLocation" x="140" y="165"/>
         </scene>
         <!--User Join2-->
         <scene sceneID="RVa-Pk-LoQ">
             <objects>
-                <viewController storyboardIdentifier="UserJoin_2" id="bYI-bJ-x2v" customClass="UserJoin_2" customModule="Pickture" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhoGrapJoin_2" id="bYI-bJ-x2v" customClass="UserJoin_2" customModule="Pickture" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b7P-RG-Ci0"/>
                         <viewControllerLayoutGuide type="bottom" id="yD0-Kf-Jkq"/>
@@ -156,9 +156,6 @@
                                 <rect key="frame" x="201" y="485" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="완 료"/>
-                                <connections>
-                                    <action selector="btnDone:" destination="bYI-bJ-x2v" eventType="touchUpInside" id="PHG-V8-0ZY"/>
-                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U9h-bj-ZTd">
                                 <rect key="frame" x="34" y="407" width="97" height="30"/>
@@ -171,25 +168,19 @@
                                 <rect key="frame" x="120" y="486" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="취 소"/>
-                                <connections>
-                                    <action selector="btnCancle:" destination="bYI-bJ-x2v" eventType="touchUpInside" id="9jR-ca-2Xv"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <outlet property="year_category" destination="U9h-bj-ZTd" id="Bcy-AJ-GAg"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nEf-my-650" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1788" y="166"/>
         </scene>
-        <!--User Join1-->
+        <!--User Join-->
         <scene sceneID="cUc-G4-KhT">
             <objects>
-                <viewController storyboardIdentifier="UserJoin_1" id="iRC-bO-SQr" customClass="UserJoin_1" customModule="Pickture" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserJoin" id="iRC-bO-SQr" customClass="UserJoin" customModule="Pickture" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EKV-ov-sAN"/>
                         <viewControllerLayoutGuide type="bottom" id="iFf-jA-khL"/>
@@ -289,9 +280,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHK-vC-Q2R">
                                 <rect key="frame" x="208" y="489" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="다 음"/>
+                                <state key="normal" title="확 인"/>
                                 <connections>
-                                    <action selector="nextTapped:" destination="iRC-bO-SQr" eventType="touchUpInside" id="Hl4-nO-8P2"/>
+                                    <action selector="btnDone:" destination="iRC-bO-SQr" eventType="touchUpInside" id="ho8-eU-Vdh"/>
                                 </connections>
                             </button>
                         </subviews>

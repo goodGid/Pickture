@@ -10,9 +10,8 @@ import Foundation
 import ObjectMapper
 
 class RegisterUserVO : Mappable{
-    
-    var sex : String?
-    var username : String?
+
+    var id : String?
     var password : String?
     
     required init?(map: Map) {
@@ -20,8 +19,7 @@ class RegisterUserVO : Mappable{
     }
     
     func mapping(map: Map) {
-        self.sex <- map["sex"]
-        self.username <- map["username"]
+        self.id <- map["id"]
         self.password <- map["password"]
     }
 }

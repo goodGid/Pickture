@@ -12,15 +12,13 @@ import AlamofireObjectMapper
 
 class RegisterModel: NetworkModel {
     
-    func registerUser(sex:String, username:String, password: String){
-        let URL : String = "\(baseURL)/api/user/login"
+    func registerUser(id:String, password: String){
+        let URL : String = "\(baseURL)/users/register"
         
         let body : [String:String] = [
-            "id" : sex,
-            "username" : username,
-            "pw" : password
+            "id" : id,
+            "password" : password
         ]
-        
         
         Alamofire.request(URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: nil).responseObject{
             (response : DataResponse<RegisterUserVO>) in
@@ -33,10 +31,6 @@ class RegisterModel: NetworkModel {
                 }
                 
                 print(" success ")
-                
-                print(result)
-                
-                
                 
                 /*
                 if result.message == "save"{

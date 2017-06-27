@@ -10,16 +10,7 @@ import Foundation
 import Kingfisher
 
 extension UIViewController{
-    
-    func simplerAlert(title:String, message msg:String){
-        
-        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-        let okAction = UIAlertAction(title:"확인",style:.default)
-        alert.addAction(okAction)
-        present(alert,animated:true)
-    }
-    
-    
+
     func gsno(_ value:String?)->String{
         
         guard let value_ = value else{

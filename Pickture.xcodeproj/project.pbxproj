@@ -12,9 +12,11 @@
 		89271EAA1F01C79000D32757 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89271EA91F01C79000D32757 /* CheckBox.swift */; };
 		89271EAC1F01C7B400D32757 /* ToggleImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89271EAB1F01C7B400D32757 /* ToggleImageButton.swift */; };
 		89271EAE1F01C7D200D32757 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89271EAD1F01C7D200D32757 /* ToggleButton.swift */; };
-		89271EB01F01C89200D32757 /* UserJoin_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89271EAF1F01C89200D32757 /* UserJoin_1.swift */; };
+		89271EB01F01C89200D32757 /* UserJoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89271EAF1F01C89200D32757 /* UserJoin.swift */; };
 		89271EB41F01DC9400D32757 /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89271EB31F01DC9400D32757 /* RegisterModel.swift */; };
 		89271EB61F01DDD200D32757 /* RegisterUserVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89271EB51F01DDD200D32757 /* RegisterUserVO.swift */; };
+		89271EB81F0254CC00D32757 /* PhoGrapJoin_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89271EB71F0254CC00D32757 /* PhoGrapJoin_1.swift */; };
+		89271EBA1F0254D800D32757 /* PhoGrapJoin_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89271EB91F0254D800D32757 /* PhoGrapJoin_2.swift */; };
 		89B21AB81EFFE30A008E75F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B21AB71EFFE30A008E75F9 /* AppDelegate.swift */; };
 		89B21ABA1EFFE30A008E75F9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B21AB91EFFE30A008E75F9 /* Login.swift */; };
 		89B21ABD1EFFE30A008E75F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89B21ABB1EFFE30A008E75F9 /* Main.storyboard */; };
@@ -51,9 +53,11 @@
 		89271EA91F01C79000D32757 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		89271EAB1F01C7B400D32757 /* ToggleImageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleImageButton.swift; sourceTree = "<group>"; };
 		89271EAD1F01C7D200D32757 /* ToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
-		89271EAF1F01C89200D32757 /* UserJoin_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserJoin_1.swift; sourceTree = "<group>"; };
+		89271EAF1F01C89200D32757 /* UserJoin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserJoin.swift; sourceTree = "<group>"; };
 		89271EB31F01DC9400D32757 /* RegisterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
 		89271EB51F01DDD200D32757 /* RegisterUserVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterUserVO.swift; sourceTree = "<group>"; };
+		89271EB71F0254CC00D32757 /* PhoGrapJoin_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoGrapJoin_1.swift; sourceTree = "<group>"; };
+		89271EB91F0254D800D32757 /* PhoGrapJoin_2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoGrapJoin_2.swift; sourceTree = "<group>"; };
 		89B21AB41EFFE30A008E75F9 /* Pickture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pickture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89B21AB71EFFE30A008E75F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89B21AB91EFFE30A008E75F9 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -141,8 +145,10 @@
 		89271EA71F01C4DC00D32757 /* Join */ = {
 			isa = PBXGroup;
 			children = (
-				89271EAF1F01C89200D32757 /* UserJoin_1.swift */,
+				89271EAF1F01C89200D32757 /* UserJoin.swift */,
 				891E5D8B1F01502900BBD9CD /* UserJoin_2.swift */,
+				89271EB71F0254CC00D32757 /* PhoGrapJoin_1.swift */,
+				89271EB91F0254D800D32757 /* PhoGrapJoin_2.swift */,
 				89271EA91F01C79000D32757 /* CheckBox.swift */,
 				89271EAB1F01C7B400D32757 /* ToggleImageButton.swift */,
 				89271EAD1F01C7D200D32757 /* ToggleButton.swift */,
@@ -451,12 +457,14 @@
 				89271EB61F01DDD200D32757 /* RegisterUserVO.swift in Sources */,
 				89271EB41F01DC9400D32757 /* RegisterModel.swift in Sources */,
 				89271EAA1F01C79000D32757 /* CheckBox.swift in Sources */,
-				89271EB01F01C89200D32757 /* UserJoin_1.swift in Sources */,
+				89271EB01F01C89200D32757 /* UserJoin.swift in Sources */,
 				89271EAE1F01C7D200D32757 /* ToggleButton.swift in Sources */,
 				89271EAC1F01C7B400D32757 /* ToggleImageButton.swift in Sources */,
 				89B21AE81EFFE45C008E75F9 /* ExtensionControl.swift in Sources */,
+				89271EB81F0254CC00D32757 /* PhoGrapJoin_1.swift in Sources */,
 				89B21ABA1EFFE30A008E75F9 /* Login.swift in Sources */,
 				89B21AB81EFFE30A008E75F9 /* AppDelegate.swift in Sources */,
+				89271EBA1F0254D800D32757 /* PhoGrapJoin_2.swift in Sources */,
 				891E5D8C1F01502900BBD9CD /* UserJoin_2.swift in Sources */,
 				89B21AED1EFFE5BD008E75F9 /* NetworkModel.swift in Sources */,
 				89B21AEB1EFFE556008E75F9 /* NetworkCallback.swift in Sources */,

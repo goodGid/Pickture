@@ -1,19 +1,19 @@
 //
-//  UserJoin.swift
+//  PhoGrapJoin_2.swift
 //  Pickture
 //
-//  Created by Kiyong Shin on 26/06/2017.
+//  Created by Kiyong Shin on 27/06/2017.
 //  Copyright © 2017 기용 신. All rights reserved.
 //
 
 import UIKit
 
-class UserJoin_2: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIGestureRecognizerDelegate, NetworkCallback {
-
+class PhoGrapJoin_2: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIGestureRecognizerDelegate, NetworkCallback {
+    
     @IBOutlet weak var year_category: UITextField!
     
     var year_picker = UIPickerView()
-
+    
     var year_data = ["1900","1901","1902"]
     
     var year_Toolbar = UIToolbar()
@@ -73,7 +73,7 @@ class UserJoin_2: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,U
         //btnSpace에 주석처리를 한뒤
         //toobar,setitems() 메소드 내부에서 btnSpace 를 제외하고 빌드시켜보시기 바랍니다
         let btnSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-    
+        
         let year_btnDone = UIBarButtonItem(title: "선택", style: .done, target: self, action: #selector(selectedYear))
         year_Toolbar = UIToolbar(frame: barFrame)
         year_Toolbar.setItems([btnSpace,year_btnDone], animated: true)
@@ -85,15 +85,15 @@ class UserJoin_2: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,U
         if pickerView == year_picker {
             return year_data.count
         }
-        
-        /*
-        else if pickerView == month_picker{
-            return month_data.count
-        }
-        else if pickerView == day_picker{
-            return day_data.count
-        }
-         */
+            
+            /*
+             else if pickerView == month_picker{
+             return month_data.count
+             }
+             else if pickerView == day_picker{
+             return day_data.count
+             }
+             */
             
         else
         {
@@ -129,7 +129,7 @@ class UserJoin_2: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,U
     
     func initPickerView(){
         initToolbar()
-       
+        
         year_picker.dataSource = self
         year_picker.delegate = self
         year_picker.dataSource = self
@@ -138,4 +138,6 @@ class UserJoin_2: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,U
     }
     
 }
+
+
 
