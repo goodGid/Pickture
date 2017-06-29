@@ -10,29 +10,80 @@ import UIKit
 
 class PhoGrapJoin_2: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIGestureRecognizerDelegate, NetworkCallback {
     
-    @IBOutlet weak var year_category: UITextField!
+    @IBOutlet weak var place_category: UITextField!
+    @IBOutlet weak var btnCancle_Custom: UIButton!
+    @IBOutlet weak var btnDone_Custom: UIButton!
     
-    var year_picker = UIPickerView()
+    @IBOutlet weak var chkDate: CheckBox!
+    @IBOutlet weak var chkFriends: CheckBox!
+    @IBOutlet weak var chkWedding: CheckBox!
+    @IBOutlet weak var chkBaby: CheckBox!
+    @IBOutlet weak var chkProfile: CheckBox!
+    @IBOutlet weak var chkEtc: CheckBox!
     
-    var year_data = ["1900","1901","1902"]
+    var place_picker = UIPickerView()
     
-    var year_Toolbar = UIToolbar()
+    var place_data =  ["서울", "경기∙인천", "강원", "충북∙세종", "충남∙대전", "경북∙대구", "경남∙울산∙대구", "전북", "전남∙광주", "제주"]
     
-    var year_category_index : Int?
+    var place_Toolbar = UIToolbar()
+    
+    var place_category_index : Int?
+  
     
     
     // UserJoin_1에서 넘겨줄 Data
     var id : String?
     var password : String?
-    
+    override func viewDidLoad() {
+        initPickerView()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap_mainview(_: )))
+        tap.delegate = self
+        self.view.addGestureRecognizer(tap)
+        
+        
+        btnCancle_Custom.roundedButton()
+        btnDone_Custom.roundedButton()
+
+        
+        chkDate.setImage(UIImage(named: "uncheckbox"), for: UIControlState())
+        chkFriends.setImage(UIImage(named: "uncheckbox"), for: UIControlState())
+        chkWedding.setImage(UIImage(named: "uncheckbox"), for: UIControlState())
+        chkBaby.setImage(UIImage(named: "uncheckbox"), for: UIControlState())
+        chkProfile.setImage(UIImage(named: "uncheckbox"), for: UIControlState())
+        chkEtc.setImage(UIImage(named: "uncheckbox"), for: UIControlState())
+        
+        
+        
+        chkDate.setToggleImages(trueImgName: "checkbox", falseImgName: "uncheckbox")
+        chkFriends.setToggleImages(trueImgName: "checkbox", falseImgName: "uncheckbox")
+        chkWedding.setToggleImages(trueImgName: "checkbox", falseImgName: "uncheckbox")
+        chkBaby.setToggleImages(trueImgName: "checkbox", falseImgName: "uncheckbox")
+        chkProfile.setToggleImages(trueImgName: "checkbox", falseImgName: "uncheckbox")
+        chkEtc.setToggleImages(trueImgName: "checkbox", falseImgName: "uncheckbox")
+    }
 
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        registerForKeyboardNotifications()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        unregisterForKeyboardNotifications()
+    }
+    
+    
+    
     @IBAction func btnDone(_ sender: Any) {
+        /*
         let _id = gsno(id)
         let _password = gsno(password)
         
-        let model = RegisterModel(self)
+         let model = RegisterModel(self)
         model.registerUser(id: _id, password: _password)
+        */
+        
         
         let vc = storyboard?.instantiateViewController(withIdentifier: "Login")
         present(vc!, animated: true)
@@ -48,11 +99,13 @@ class PhoGrapJoin_2: UIViewController,UIPickerViewDelegate,UIPickerViewDataSourc
         navigationController?.popViewController(animated: true)
     }
     
+  
     
     
-    override func viewDidLoad() {
-        initPickerView()
-    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // Pickerview
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    
     
     func initToolbar(){
         let barFrame = CGRect(x: 0, y: 0, width: view.frame.width, height: 40)
@@ -63,16 +116,16 @@ class PhoGrapJoin_2: UIViewController,UIPickerViewDelegate,UIPickerViewDataSourc
         //toobar,setitems() 메소드 내부에서 btnSpace 를 제외하고 빌드시켜보시기 바랍니다
         let btnSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         
-        let year_btnDone = UIBarButtonItem(title: "선택", style: .done, target: self, action: #selector(selectedYear))
-        year_Toolbar = UIToolbar(frame: barFrame)
-        year_Toolbar.setItems([btnSpace,year_btnDone], animated: true)
+        let place_btnDone = UIBarButtonItem(title: "선택", style: .done, target: self, action: #selector(selectedYear))
+        place_Toolbar = UIToolbar(frame: barFrame)
+        place_Toolbar.setItems([btnSpace,place_btnDone], animated: true)
     }
     
     //각각의 피커뷰가 반환해야 하는 목록의 갯수 설정
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        //1. year 피커뷰 데이터 목록 갯수 반환
-        if pickerView == year_picker {
-            return year_data.count
+        //1. place 피커뷰 데이터 목록 갯수 반환
+        if pickerView == place_picker {
+            return place_data.count
         }
             
             /*
@@ -92,7 +145,7 @@ class PhoGrapJoin_2: UIViewController,UIPickerViewDelegate,UIPickerViewDataSourc
     
     //피커뷰 목록의 타이틀 반환
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return year_data[row]
+        return place_data[row]
     }
     
     //피커뷰의 컴포넌트는 각각 1개
@@ -101,29 +154,113 @@ class PhoGrapJoin_2: UIViewController,UIPickerViewDelegate,UIPickerViewDataSourc
     }
     
     
-    
-    
     func selectedYear(){
         initPickerView()
         
-        let row = year_picker.selectedRow(inComponent: 0)
-        print("year picker")
-        print(row)
-        year_category.text = year_data[row]
-        year_category_index = row
+        let row = place_picker.selectedRow(inComponent: 0)
+        place_category.text = place_data[row]
+        place_category_index = row
         
         //피커뷰에서 선택한 텍스트필드 값을 변경되지 않게 막아줍니다
-        year_category.endEditing(true)
+        place_category.endEditing(true)
     }
     
     func initPickerView(){
         initToolbar()
         
-        year_picker.dataSource = self
-        year_picker.delegate = self
-        year_picker.dataSource = self
-        year_category.inputView = year_picker
-        year_category.inputAccessoryView = year_Toolbar
+        place_picker.dataSource = self
+        place_picker.delegate = self
+        place_picker.dataSource = self
+        place_category.inputView = place_picker
+        place_category.inputAccessoryView = place_Toolbar
+    }
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // Key Board
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
+    //resignFirsReponder
+    func handleTap_mainview(_ sender: UITapGestureRecognizer?) {
+        
+        
+    }
+    
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    
+    func unregisterForKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name:NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name:NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func keyboardWillShow(note: NSNotification) {
+        //        adjustKeyboardHeight(true, note)
+    }
+    
+    func keyboardWillHide(note: NSNotification) {
+        //        adjustKeyboardHeight(false, note)
+    }
+    
+
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // Check Box
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    @IBAction func btnChkDate(_ sender: Any) {
+        if chkDate.checked{
+            chkDate.setButtonChecked(true)
+        }
+        else {
+            chkDate.setButtonChecked(false)
+        }
+    }
+    
+    @IBAction func btnChkFriends(_ sender: Any) {
+        if chkFriends.checked{
+            chkFriends.setButtonChecked(true)
+        }
+        else {
+            chkFriends.setButtonChecked(false)
+        }
+    }
+    @IBAction func btnChkWedding(_ sender: Any) {
+        if chkWedding.checked{
+            chkWedding.setButtonChecked(true)
+        }
+        else {
+            chkWedding.setButtonChecked(false)
+        }
+    }
+    @IBAction func btnChkBaby(_ sender: Any) {
+        if chkBaby.checked{
+            chkBaby.setButtonChecked(true)
+        }
+        else {
+            chkBaby.setButtonChecked(false)
+        }
+    }
+    @IBAction func btnChkProfile(_ sender: Any) {
+        if chkProfile.checked{
+            chkProfile.setButtonChecked(true)
+        }
+        else {
+            chkProfile.setButtonChecked(false)
+        }
+    }
+    
+    @IBAction func btnChkEtc(_ sender: Any) {
+        if chkEtc.checked{
+            chkEtc.setButtonChecked(true)
+        }
+        else {
+            chkEtc.setButtonChecked(false)
+        }
     }
     
 }

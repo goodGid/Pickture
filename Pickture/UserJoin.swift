@@ -8,24 +8,59 @@
 
 import UIKit
 
-class UserJoin : UIViewController, NetworkCallback {
+class UserJoin : UIViewController, UIGestureRecognizerDelegate, NetworkCallback {
     
     @IBOutlet weak var checkBoy: CheckBox!
     @IBOutlet weak var checkGirl: CheckBox!
     
+    @IBOutlet weak var SecondBg: UIImageView!
     var chkID : Int = 0
     
     @IBOutlet weak var txtID: UITextField!
     @IBOutlet weak var txtPW: UITextField!
     @IBOutlet weak var txtPW2: UITextField!
     
+    @IBOutlet weak var btnChkID_Custom: UIButton!
+    @IBOutlet weak var btnCancle_Custom: UIButton!
+    @IBOutlet weak var btnDone_Custom: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
         
-        checkBoy.setToggleImages(trueImgName: "joinbutton_public", falseImgName: "joinbutton_photographer")
-        checkGirl.setToggleImages(trueImgName: "joinbutton_public", falseImgName: "joinbutton_photographer")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap_mainview(_: )))
+        tap.delegate = self
+        self.view.addGestureRecognizer(tap)
+        
+        SecondBg.layer.cornerRadius = 15
+        SecondBg.layer.opacity = 0.52
+
+        txtID.setBottomBorder()
+        txtPW.setBottomBorder()
+        txtPW2.setBottomBorder()
+        
+        btnChkID_Custom.roundedButton()
+        btnCancle_Custom.roundedButton()
+        btnDone_Custom.roundedButton()
+        
+
+        checkBoy.setImage(UIImage(named: "uncheck"), for: UIControlState())
+        checkGirl.setImage(UIImage(named: "uncheck"), for: UIControlState())
+        
+        
+        checkBoy.setToggleImages(trueImgName: "check", falseImgName: "uncheck")
+        checkGirl.setToggleImages(trueImgName: "check", falseImgName: "uncheck")
     }
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        registerForKeyboardNotifications()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        unregisterForKeyboardNotifications()
+    }
+    
     
     // id 중복 체크
     @IBAction func btnChkID(_ sender: Any) {
@@ -47,22 +82,83 @@ class UserJoin : UIViewController, NetworkCallback {
     
     
     @IBAction func btnDone(_ sender: Any) {
-        let _id = gsno(txtID.text)
-        let _password = gsno(txtPW.text)
+        guard var _id = txtID.text, var _password = txtPW.text, var _password2 = txtPW2.text else{
+            return
+        }
+        
+        /*
+        if checkBoy.checked == false && checkGirl.checked  == false {
+            simpleAlert(title: "입력 오류", msg: "성별을 입력해주세요.")
+            return
+        }
+        if _id.isEmpty {
+            simpleAlert(title: "입력 오류", msg: "ID를 입력해주세요.")
+            return
+        }
+        if _password.isEmpty {
+            simpleAlert(title: "입력 오류", msg: "PW를 입력해주세요.")
+            return
+        }
+        if _password != _password2 {
+            simpleAlert(title: "입력 오류", msg: "PW가 불일치 합니다.")
+        }
+        */
+        
+        _id = gsno(_id)
+        _password = gsno(_password)
         
         let model = RegisterModel(self)
         model.registerUser(id: _id, password: _password)
+        dismiss(animated: true, completion: nil)
+        
     }
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // Key Board
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
+    //resignFirsReponder
+    func handleTap_mainview(_ sender: UITapGestureRecognizer?) {
+        self.txtID.resignFirstResponder()
+        self.txtPW.resignFirstResponder()
+        self.txtPW2.resignFirstResponder()
+    }
+    
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    
+    func unregisterForKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name:NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name:NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func keyboardWillShow(note: NSNotification) {
+        //        adjustKeyboardHeight(true, note)
+    }
+    
+    func keyboardWillHide(note: NSNotification) {
+        //        adjustKeyboardHeight(false, note)
+    }
+    
+
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // Check Box
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    
     
     
     @IBAction func btnChkBoy(_ sender: Any) {
         if checkBoy.checked{
-            print(" boy check ")
             checkBoy.setButtonChecked(true)
             checkGirl.setButtonChecked(false)
         }
         else {
-            print(" boy uncheck ")
             checkBoy.setButtonChecked(false)
             checkGirl.setButtonChecked(true)
         }
@@ -70,12 +166,10 @@ class UserJoin : UIViewController, NetworkCallback {
     
     @IBAction func btnChkGirl(_ sender: Any) {
         if checkGirl.checked{
-            print(" girl check ")
             checkBoy.setButtonChecked(false)
             checkGirl.setButtonChecked(true)
         }
         else {
-            print(" girl uncheck ")
             checkBoy.setButtonChecked(true)
             checkGirl.setButtonChecked(false)
         }

@@ -49,11 +49,13 @@ class ToggleButton: UIButton {
     func setButtonChecked(_ check: Bool) {
         if check {
             self.setTitleColor(checkedTextColor, for: UIControlState())
-            self.backgroundColor = checkedColor
+            self.backgroundColor = UIColor.blue
+//            self.backgroundColor = checkedColor
             self.checked = true
         } else {
             self.setTitleColor(unCheckedTextColor, for: UIControlState())
-            self.backgroundColor = unCheckedColor
+//            self.backgroundColor = unCheckedColor
+            self.backgroundColor = UIColor.black
             self.checked = false
         }
     }

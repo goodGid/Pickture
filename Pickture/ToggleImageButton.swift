@@ -11,8 +11,8 @@ import UIKit
 
 class ToggleImageButton: ToggleButton {
     
-    static let CHECK_ON = "joinbutton_public"
-    static let CHECK_OFF = "joinbutton_photographer"
+    static let CHECK_ON = "check"
+    static let CHECK_OFF = "uncheck"
     
     internal var trueImg : UIImage?
     internal var falseImg: UIImage?

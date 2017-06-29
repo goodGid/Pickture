@@ -14,6 +14,31 @@ class RegisterModel: NetworkModel {
     
     
     
+    
+    func registerUser(id:String, password: String){
+        let URL : String = "\(baseURL)/users/register"
+        
+        let body : [String:String] = [
+            "id" : id,
+            "password" : password
+        ]
+        
+        Alamofire.request(URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: nil).responseObject{
+            (response : DataResponse<RegisterUserVO>) in
+            
+            switch response.result {
+                
+            case .success:
+                print(" success ")
+                
+            case .failure(let err):
+                print(err)
+                self.view.networkFailed()
+            }
+        }
+    }
+    
+    
     func chkID(id:String){
         let URL : String = "\(baseURL)/users/validation"
         
@@ -50,28 +75,6 @@ class RegisterModel: NetworkModel {
     
     
     
-    
-    func registerUser(id:String, password: String){
-        let URL : String = "\(baseURL)/users/register"
-        
-        let body : [String:String] = [
-            "id" : id,
-            "password" : password
-        ]
-        
-        Alamofire.request(URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: nil).responseObject{
-            (response : DataResponse<RegisterUserVO>) in
-            
-            switch response.result {
-                
-            case .success:
-                print(" success ")
-                
-            case .failure(let err):
-                print(err)
-                self.view.networkFailed()
-            }
-        }
-    }
+  
     
 }

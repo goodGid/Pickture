@@ -10,7 +10,7 @@ import Foundation
 import Kingfisher
 
 extension UIViewController{
-
+ 
     func gsno(_ value:String?)->String{
         
         guard let value_ = value else{
@@ -51,6 +51,48 @@ extension UIViewController{
     }
     
     
+    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
+    
+    
+}
+
+extension UITextField
+{
+    func setBottomBorder()
+    {
+        self.borderStyle = UITextBorderStyle.none;
+        let border = CALayer()
+        let width = CGFloat(1.0)
+        
+        border.borderColor =  UIColor(red:0.58, green:0.60, blue:0.60, alpha:1.0).cgColor
+        border.frame = CGRect(x: 0, y: self.frame.size.height - width,   width:  self.frame.size.width, height: self.frame.size.height)
+        border.borderWidth = width
+        self.layer.addSublayer(border)
+        self.layer.masksToBounds = true
+    }
+    
+}
+
+
+
+extension UIButton{
+    func roundedButton(){
+        let maskPAth1 = UIBezierPath(roundedRect: self.bounds,
+                                     byRoundingCorners: [.topLeft , .topRight, .bottomLeft, .bottomRight],
+                                     cornerRadii: CGSize(width: 20, height: 20))
+        let maskLayer1 = CAShapeLayer()
+        maskLayer1.frame = self.bounds
+        maskLayer1.path = maskPAth1.cgPath
+        self.layer.mask = maskLayer1
+        
+    }
 }
 
 
