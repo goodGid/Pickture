@@ -119,7 +119,6 @@ class UserJoin : UIViewController, UIGestureRecognizerDelegate, NetworkCallback 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     
     
-    //resignFirsReponder
     func handleTap_mainview(_ sender: UITapGestureRecognizer?) {
         self.txtID.resignFirstResponder()
         self.txtPW.resignFirstResponder()

@@ -65,6 +65,12 @@ class Home: UIViewController, UICollectionViewDelegate, UICollectionViewDataSour
     
     @IBAction func btnDate(_ sender: Any) {
         
+        if let svc = storyboard?.instantiateViewController(withIdentifier: "DetailCategory") as? DetailCategory {
+            svc._categoryLabel = gsno("test")
+            //            svc.id = gsno(_id)
+            //            svc.password = gsno(_password)
+            self.navigationController?.pushViewController(svc, animated: true)
+        }
     }
     
     @IBAction func btnFriends(_ sender: Any) {

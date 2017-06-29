@@ -116,7 +116,7 @@ class PhoGrapJoin_2: UIViewController,UIPickerViewDelegate,UIPickerViewDataSourc
         //toobar,setitems() 메소드 내부에서 btnSpace 를 제외하고 빌드시켜보시기 바랍니다
         let btnSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         
-        let place_btnDone = UIBarButtonItem(title: "선택", style: .done, target: self, action: #selector(selectedYear))
+        let place_btnDone = UIBarButtonItem(title: "선택", style: .done, target: self, action: #selector(selectedPlace))
         place_Toolbar = UIToolbar(frame: barFrame)
         place_Toolbar.setItems([btnSpace,place_btnDone], animated: true)
     }
@@ -154,7 +154,7 @@ class PhoGrapJoin_2: UIViewController,UIPickerViewDelegate,UIPickerViewDataSourc
     }
     
     
-    func selectedYear(){
+    func selectedPlace(){
         initPickerView()
         
         let row = place_picker.selectedRow(inComponent: 0)

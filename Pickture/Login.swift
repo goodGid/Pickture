@@ -68,8 +68,6 @@ class Login: UIViewController, UIGestureRecognizerDelegate {
     // Key Board
     ////////////////////////////////////////////////////////////////////////////////////////////////
     
-   
-    //resignFirsReponder
     func handleTap_mainview(_ sender: UITapGestureRecognizer?) {
         self.inputID.resignFirstResponder()
         self.inputPW.resignFirstResponder()
@@ -87,11 +85,11 @@ class Login: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func keyboardWillShow(note: NSNotification) {
-        //        adjustKeyboardHeight(true, note)
+        
     }
     
     func keyboardWillHide(note: NSNotification) {
-        //        adjustKeyboardHeight(false, note)
+        
     }
     
     
