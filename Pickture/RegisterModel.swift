@@ -29,7 +29,7 @@ class RegisterModel: NetworkModel {
             switch response.result {
                 
             case .success:
-                print(" success ")
+                self.view.networkResult(resultData: response.result as Any, code: "registerUser")
                 
             case .failure(let err):
                 print(err)
@@ -40,13 +40,9 @@ class RegisterModel: NetworkModel {
     
     
     func chkID(id:String){
-        let URL : String = "\(baseURL)/users/validation"
+        let URL : String = "\(baseURL)/users/validation/\(id)"
         
-        let body : [String:String] = [
-            "id" : id,
-        ]
-        
-        Alamofire.request(URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: nil).responseObject{
+        Alamofire.request(URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseObject{
             (response : DataResponse<ChkIDVO>) in
             
             switch response.result {
@@ -56,13 +52,17 @@ class RegisterModel: NetworkModel {
                     return
                 }
                 
+                
                 // 1이면 이미 아이디 존재
                  if result.result == 1 {
+                    self.view.networkResult(resultData: result as Any, code: "Exist")
                     print(" Already Exist ")
                  }
                 else{
+                    self.view.networkResult(resultData: result as Any, code: "notExist")
                     print(" Already Not Exist ")
                  }
+                
                 
                 
             case .failure(let err):

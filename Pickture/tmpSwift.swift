@@ -9,9 +9,21 @@
 /*
  
  
+ 
+ ------------------------------------------------------------------------------------------------
+ Splash
+ 
+ 
+ let jeremyGif2 = UIImage.gif(name: "loading_slow_new2")
+ let imageView2 = UIImageView(image: jeremyGif2)
+ imageView2.frame = CGRect(x: self.view.frame.size.width/2-30, y: self.view.frame.size.height/2-65, width: 60.0, height: 90.0)
+ view.addSubview(imageView2)
+ 
+ ------------------------------------------------------------------------------------------------
+ 
  let ud = UserDefaults.standard
  ud.set(id, forKey: "id")
- ud.set(accountSequence, forKey: "accountSequence")
+UserDefaults.standard.integer(forKey: "autoLogin")
  
  
  
@@ -23,23 +35,25 @@
  
  
  
+ // 다음 뷰 백버튼
+ let backItem = UIBarButtonItem()
+ backItem.title = ""
+ self.navigationItem.backBarButtonItem = backItem
+ 
+ // 지금 뷰 타이틀
+ self.navigationItem.title = "CATEGORY"
+ self.navigationController?.navigationBar.topItem?.title = ""
+ self.navigationController?.navigationBar.tintColor = UIColor(red: 229.0/255.0, green: 167.0/255.0, blue: 28.0/255.0, alpha: 0.8)
+ 
+
+ 
+ 
+ 
+ 
+ 
  사진 접근
  https://turbofuture.com/cell-phones/Access-Photo-Camera-and-Library-in-Swift
- 
- 
- 서버에서 받은 데이터 활용하는법
- - 5차세미나 참고
- 
- 
- 
- 사진관련 6차세미나 참고
- - Network - BoardModel - writeBoardWithImage
- - WriteBoard 하단에 사진 컨트롤 설명
- 
- 
- //네비게이션
- self.navigationController?.pushViewController(nvc, animated: true)
- nvc.navigationItem.title = "나의 신청 현황"
+
  
  
  //네비게이션 컬
@@ -50,14 +64,7 @@
  nvc.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : Any]
  
  nvc.navigationController?.navigationBar.barTintColor = UIColor.white
- 
- //백 버튼
- let backItem = UIBarButtonItem()
- backItem.title = ""
- navigationItem.backBarButtonItem = backItem
- 
- 
- 
+
  
  
  */

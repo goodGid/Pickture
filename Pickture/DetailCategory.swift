@@ -10,20 +10,17 @@ import UIKit
 import AlamofireObjectMapper
 import Alamofire
 
-class DetailCategory : UIViewController {
+
+class DetailCategory : UIViewController, NetworkCallback {
     
     @IBOutlet weak var CateListTable: UITableView!
     
     @IBOutlet weak var place_category: UITextField!
     @IBOutlet weak var categoryLabel: UILabel!
     
+    var phograpLists : [photographersVO] = [photographersVO]()
     
-    let URL : String = "https://raw.githubusercontent.com/tristanhimmelman/AlamofireObjectMapper/d8bb95982be8a11a2308e779bb9a9707ebe42ede/sample_json"
     
-//    var threedaysForecast : [ForecastVO] = [ForecastVO]()
-    var location : String?
-    
-    var cateogory : String?
     var _categoryLabel : String?
     
     var place_picker = UIPickerView()
@@ -31,121 +28,95 @@ class DetailCategory : UIViewController {
     
     var place_Toolbar = UIToolbar()
     var place_category_index : Int?
-  
     
     override func viewDidLoad() {
         initPickerView()
         CateListTable.delegate = self
         CateListTable.dataSource = self
-        
         categoryLabel.text = _categoryLabel
+       
         
-        Alamofire.request(URL).responseObject {
-            
-            /*클로져구문입니다
-             DataResponse<클래스명>
-             여기서 클래스명에 대응되는 클래스는 서버로부터 받아오는 가장 상위레벨의 데이터 형들과 일치해야합니다
-             우리가 로컬변수로 location 과 threedaysForecast는
-             DataReponse<클래스명> 의 타입으로 받아오는 데이터를 저장하기 위함입니다.*/
-            
-            (response : DataResponse<CateListRpVO>) in
-            
-            
-            //response.result 는 네트워크의 성공실패 여부 결과를 담고있습니다
-            
-            //네트워크 결과
-            switch response.result{
-                
-            case .success:
-                
-                guard let forecast = response.result.value else{
-                    return
-                }
-                
-                /*
-                 
-                 Edit Scope !
-                 
-                 
-                 
-                 
-                if let forecasts = forecast.threeDayForecast{
-                    
-                    //서버로부터 받아온 데이터들을 우리가 선언한 변수에 담아줍니다
-                    self.location = forecast.location
-                    self.threedaysForecast = forecasts
-                    
-                    //기본적으로 Alamofire는 비동기 방식이기 때문에 반드시 reloadData를 이용해서
-                    //테이블뷰의 데이터를 갱신해주어야 합니다.
-                    self.CateListTable.reloadData()
-                    
-                }
-                */
-                
-                
-            case .failure(let err):
-                print(err)
-                
-            }
+        
+        // 다음 뷰 백버튼
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        self.navigationItem.backBarButtonItem = backItem
+        
+        // 지금 뷰 타이틀
+        self.navigationItem.title = "CATEGORY"
+        self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 229.0/255.0, green: 167.0/255.0, blue: 28.0/255.0, alpha: 0.8)
+        
+        
+        //sepeartor 제거
+        self.CateListTable.separatorStyle = UITableViewCellSeparatorStyle.none
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let model = HomeModel(self)
+        model.getPhograpListFromCate(category: _categoryLabel!, empty: "")
+    }
+    
+    func networkResult(resultData: Any, code: String) {
+        if code == "getPhograpListFromCate" || code == "getPhograpListFromCateWithLocation"{
+            phograpLists = resultData as! [photographersVO]
+            CateListTable.reloadData()
         }
     }
-
 }
+
+
+
 extension DetailCategory : UITableViewDelegate,UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    
-        
-        //  Edit Scope !
-        //        return threedaysForecast.count
-        
-        
-        return 10
+        return phograpLists.count
     }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
-        
         let cell = CateListTable.dequeueReusableCell(withIdentifier: "CateListCell") as! CateListCell
         
-        /*
-         
-        Edit Scope !
-         
-         
-        let forecast = threedaysForecast[indexPath.row]
-        cell.dayTxt.text = forecast.day!
-        cell.conditionTxt.text = forecast.conditions!
-        cell.temperatureTxt.text = "\(forecast.temperature!)"
-        cell.weatherImg.image = UIImage(named: forecast.conditions!)
-        */
+        let tmpPhograpList = phograpLists[indexPath.row]
+        cell.phoGrapName.text = gsno(tmpPhograpList.id)
+        cell.phoGrapLocation.text = gsno(tmpPhograpList.location)
+        cell.phoGrapImg.imageFromUrl(tmpPhograpList.profile_url, defaultImgPath: "artist")
+        
+        cell.phoGrapImg.layer.cornerRadius = (cell.phoGrapImg?.frame.size.width)! / 2
+        cell.phoGrapImg.layer.masksToBounds = true
+        
+        
+        
+        
+        cell.img1.imageFromUrl(tmpPhograpList.recent_photos?[0], defaultImgPath: "artist")
+        cell.img2.imageFromUrl(tmpPhograpList.recent_photos?[1], defaultImgPath: "artist")
+        cell.img3.imageFromUrl(tmpPhograpList.recent_photos?[2], defaultImgPath: "artist")
+        
+        
         return cell
     }
     
-    
-    
-    /*
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let boardVO = boardList[indexPath.row]
-        
-        guard let dvc = storyboard?.instantiateViewController(withIdentifier: "DetailBoard") as? DetailBoard else{
+        guard let dvc = storyboard?.instantiateViewController(withIdentifier: "PhoGrapInfo") as?
+        DetailPhoGrapInfo else{
             return
         }
-        dvc.id = boardVO.id
+        
+        let tmpPhograpList = phograpLists[indexPath.row]
+        dvc._phograpID = tmpPhograpList.id
+        dvc._phograpImg = tmpPhograpList.profile_url
+        dvc._phograpName = tmpPhograpList.id
+        dvc._phograpHashTag = tmpPhograpList.hashtag
+        dvc._phograpLocation = tmpPhograpList.location
+        dvc._phograpPicked = tmpPhograpList.picked
+        
+        
+        
         navigationController?.pushViewController(dvc, animated: true)
     }
-     */
-    
-    
-    
 }
 
-    
-    
-    
-    
 
 extension DetailCategory : UIPickerViewDelegate,UIPickerViewDataSource {
  
@@ -192,6 +163,11 @@ extension DetailCategory : UIPickerViewDelegate,UIPickerViewDataSource {
         place_category.text = place_data[row]
         place_category_index = row
         
+        let model = HomeModel(self)
+        model.getPhograpListFromCateWithLocation(category: _categoryLabel!, location: place_data[row])
+        
+        
+        
         //피커뷰에서 선택한 텍스트필드 값을 변경되지 않게 막아줍니다
         place_category.endEditing(true)
     }
@@ -206,14 +182,3 @@ extension DetailCategory : UIPickerViewDelegate,UIPickerViewDataSource {
         place_category.inputAccessoryView = place_Toolbar
     }
 }
-
-
-
-
-/*
- To do list
- 1. 네비게이션 백버튼 Text 수정
- 
- 
- 
- */

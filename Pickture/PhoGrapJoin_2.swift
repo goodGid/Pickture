@@ -21,6 +21,9 @@ class PhoGrapJoin_2: UIViewController,UIPickerViewDelegate,UIPickerViewDataSourc
     @IBOutlet weak var chkProfile: CheckBox!
     @IBOutlet weak var chkEtc: CheckBox!
     
+    @IBOutlet weak var SecondBg: UIImageView!
+    
+    
     var place_picker = UIPickerView()
     
     var place_data =  ["서울", "경기∙인천", "강원", "충북∙세종", "충남∙대전", "경북∙대구", "경남∙울산∙대구", "전북", "전남∙광주", "제주"]
@@ -41,6 +44,9 @@ class PhoGrapJoin_2: UIViewController,UIPickerViewDelegate,UIPickerViewDataSourc
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap_mainview(_: )))
         tap.delegate = self
         self.view.addGestureRecognizer(tap)
+        
+        SecondBg.layer.cornerRadius = 15
+        SecondBg.layer.opacity = 0.52
         
         
         btnCancle_Custom.roundedButton()

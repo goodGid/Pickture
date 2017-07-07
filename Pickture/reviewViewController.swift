@@ -7,29 +7,81 @@
 //
 
 import UIKit
+import AlamofireObjectMapper
+import Alamofire
+import Cosmos
 
-final class reviewViewController: UIViewController {
+final class reviewViewController: UIViewController, UIGestureRecognizerDelegate, NetworkCallback {
     
-    // MARK: - View Life Cycle
+    @IBOutlet weak var reviewTable: UITableView!
+    var reviewData : [ReviewVO] = []
+    var rate : Int?
+    var phograpID : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        reviewTable.delegate = self
+        reviewTable.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        print("Sessions View Controller Will Appear")
+        let model = PhoGrapReviewModel(self)
+        model.showReviews(phograpID!)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    func networkResult(resultData: Any, code: String) {
+        if code == "GetRreviewSuccess"{
+            reviewData = resultData as! [ReviewVO]
+            reviewTable.reloadData()
+        }
+    }
+}
+
+extension reviewViewController : UITableViewDelegate,UITableViewDataSource {
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        print("Sessions View Controller Will Disappear")
+        //  Edit Scope !
+        //        return threedaysForecast.count
+        
+        return reviewData.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = reviewTable.dequeueReusableCell(withIdentifier: "ReviewCell") as! ReviewCell
+        
+        let timestamp = reviewData[indexPath.row].timestamp
+        
+        var date = ""
+        
+        for row in (timestamp?.characters)! {
+            if row == " " {
+                break
+            }
+            date += "\(row)"
+        }
+        
+        cell.txtID.text = reviewData[indexPath.row].userID
+        rate = reviewData[indexPath.row].rate
+        cell.txtDate.text = date
+        
+        
+        
+//        cell.imgRating.rating = Double(rate!)
+        cell.imgRating.rating = 2.2
+        
+        
+        // Set the color of a filled star
+        cell.imgRating.settings.filledColor = UIColor.orange
+        // Set the border color of an empty star
+        cell.imgRating.settings.emptyBorderColor = UIColor.white
+        // Set the border color of a filled star
+        cell.imgRating.settings.filledBorderColor = UIColor.orange
+        cell.imgRating.settings.starMargin = 5
+        
+        return cell
     }
     
 }
-
-
-
 

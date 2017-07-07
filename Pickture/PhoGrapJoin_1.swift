@@ -10,9 +10,7 @@ import UIKit
 
 class PhoGrapJoin_1 : UIViewController,UIGestureRecognizerDelegate, NetworkCallback {
     
-    func networkResult(resultData: Any, code: String) {
-    }
-    
+
     @IBOutlet weak var checkBoy: CheckBox!
     @IBOutlet weak var checkGirl: CheckBox!
      
@@ -26,6 +24,9 @@ class PhoGrapJoin_1 : UIViewController,UIGestureRecognizerDelegate, NetworkCallb
     @IBOutlet weak var btnCancle_Custom: UIButton!
     @IBOutlet weak var btnNext_Custom: UIButton!
     
+    @IBOutlet weak var SecondBg: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
@@ -34,6 +35,8 @@ class PhoGrapJoin_1 : UIViewController,UIGestureRecognizerDelegate, NetworkCallb
         tap.delegate = self
         self.view.addGestureRecognizer(tap)
         
+        SecondBg.layer.cornerRadius = 15
+        SecondBg.layer.opacity = 0.52
         
         txtID.setBottomBorder()
         txtPW.setBottomBorder()
@@ -55,8 +58,7 @@ class PhoGrapJoin_1 : UIViewController,UIGestureRecognizerDelegate, NetworkCallb
     override func viewWillAppear(_ animated: Bool) {
         registerForKeyboardNotifications()
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        unregisterForKeyboardNotifications()
+    func networkResult(resultData: Any, code: String) {
     }
     
     

@@ -11,11 +11,10 @@ import UIKit
 
 class CateListCell : UITableViewCell{
     
-    @IBOutlet weak var phoGrapImg: UIView!
-    
-    
+    @IBOutlet weak var phoGrapImg: UIImageView!
     @IBOutlet weak var phoGrapName: UILabel!
-    @IBOutlet var myPickImg: UIImageView!
+    @IBOutlet weak var phoGrapLocation: UILabel!
+    @IBOutlet weak var gpsImg: UIImageView!
     
     @IBOutlet var img1: UIImageView!
     @IBOutlet var img2: UIImageView!

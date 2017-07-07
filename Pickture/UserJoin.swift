@@ -77,7 +77,16 @@ class UserJoin : UIViewController, UIGestureRecognizerDelegate, NetworkCallback 
     
     
     func networkResult(resultData: Any, code: String){
-        navigationController?.popViewController(animated: true)
+        if "notExist" == code {
+            simpleAlert(title: "확인", msg: "아이디가 존재하지 않습니다.")
+        } else if "Exist" == code {
+            simpleAlert(title: "실패", msg: "아이디가 존재합니다.")
+        }
+        else if "registerUser" == code{
+            navigationController?.popViewController(animated: true)
+        } else{
+            
+        }
     }
     
     
